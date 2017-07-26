@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::post('contact_submit','MailController@submit');
 Route::get('submit_ok','MailController@submit_ok');

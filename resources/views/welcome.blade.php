@@ -91,6 +91,12 @@
                 </div>
             </div>
 
+            @foreach($posts as $post)
+                {{$post->title}}
+                @endforeach
+
+                <br><br>
+
         </div>
     </body>
 </html>
