@@ -9,7 +9,7 @@
             @foreach($products as $product)
             <li class="product">
                 <a href="/products/{{$product->id}}" title="{{$product->name}}">
-                    <img alt="{{$product->name}}" src="{{$product->category_pic}}"/>
+                    <img alt="{{$product->name}}" src="/Storage/{{$product->image}}"/>
                     <h3>{{$product->name}}</h3>
                 </a>
             </li>

@@ -66,11 +66,11 @@
         <!-- Introduction Section -->
         <div class="container introduction-section">
             <div class="row">
-                @foreach($categories as $category)
+                @foreach($product_categories as $product_category)
                 <div class="col-md-4 col-sm-6 col-xs-6 introdction-block">
-                    <a href="/products/categories/{{$category->id}}"><img src="{{$category->category_pic}}" alt="{{$category->name}}" width="370" height="281"/></a>
-                    <h3><a href="/products/categories/{{$category->id}}" title="{{$category->name}}">{{$category->name}}</a></h3>
-                    <span>{{$category->category_des}}</span>
+                    <a href="/products/categories/{{$product_category->id}}"><img src="/Storage/{{$product_category->category_image}}" alt="{{$product_category->name}}" width="370" height="281"/></a>
+                    <h3><a href="/products/categories/{{$product_category->id}}" title="{{$product_category->name}}">{{$product_category->name}}</a></h3>
+                    <span>{{$product_category->excerpt}}</span>
                 </div>
                 @endforeach
             </div>

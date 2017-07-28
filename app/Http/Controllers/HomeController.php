@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-//use App\Models\Product;
-//use App\Models\ProductCategory;
-use Illuminate\Http\Request;
-use Mail;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use TCG\Voyager\Models\Page;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
+use Illuminate\Http\Request;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -25,21 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $category_id = 1;
-        if (!Category::find($category_id)->parent_id){
-            $posts = collect();
-            $categories = Category::where('parent_id',$category_id)->get();
-            foreach ($categories as $category){
-                foreach ($category->posts()->get() as $post){
-                    $posts = $posts->push($post);
-                }
-            }
-        } else{
-            $posts = Category::find($category_id)->posts;
-        }
-        return view('welcome',compact('posts'));
+        $product_categories = ProductCategory::orderBy('order', 'desc')->orderBy('updated_at', 'desc')->get();
+        return view('index',compact('product_categories'));
     }
 
+    public function categories()
+    {
+        $product_categories = ProductCategory::orderBy('order', 'desc')->orderBy('updated_at', 'desc')->get();
+        $products = Product::orderBy('featured', 'desc')->orderBy('updated_at', 'desc')->select('id','name','image')->paginate(12);
+
+        return view('categories',compact('product_categories','products')) ;
+    }
 //    public function product_category(ProductCategory $product_category)
 //    {
 //        $products = $product_category->products()->orderBy('sort', 'asc')->orderBy('updated_at', 'desc')->paginate(10);
@@ -91,13 +87,7 @@ class HomeController extends Controller
 
 
 
-//    public function categories()
-//    {
-//        $categories = Category::orderBy('sort', 'asc')->orderBy('updated_at', 'desc')->select('id','name')->get();
-//        $products = Product::orderBy('sort', 'asc')->orderBy('updated_at', 'desc')->select('id','name','category_pic')->paginate(12);
-//
-//        return view('categories',compact('categories','products')) ;
-//    }
+
 //
 //    public function category($id)
 //    {

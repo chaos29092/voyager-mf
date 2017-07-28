@@ -12,9 +12,13 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/categories', 'HomeController@categories');
+
 
 Route::post('contact_submit','MailController@submit');
 Route::get('submit_ok','MailController@submit_ok');
+
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

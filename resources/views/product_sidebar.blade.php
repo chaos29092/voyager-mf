@@ -30,8 +30,8 @@
                                 <h3>{{trans('home.chanpinfenlei')}}</h3>
                             </div>
                             <ul>
-                                @foreach($categories as $category)
-                                <li><a href="/products/categories/{{$category->id}}">{{$category->name}}</a></li>
+                                @foreach($product_categories as $product_category)
+                                <li><a href="/products/categories/{{$product_category->id}}">{{$product_category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </aside>

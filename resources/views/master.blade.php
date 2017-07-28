@@ -53,12 +53,13 @@
                           title="{{trans('home.dianhuahaoma')}}">  037153370200</a></b>
                     <div class="dropdown">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            CHINESE
+                            ENGLISH
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="http://en.china-protech.com/">ENGLISH</a></li>
                             <li><a href="http://www.china-protech.com/">CHINESE</a></li>
-                           
+
                         </ul>
                     </div>
                 </div>
