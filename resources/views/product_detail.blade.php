@@ -1,21 +1,22 @@
 @extends('product_sidebar')
 @section('title')
-    @if(!$product->title)
+    @if(!$product->seo_title)
         {{$product->name}}
     @else
-        {{$product->title}}
+        {{$product->seo_title}}
     @endif
 @endsection
 @section('description')
-    @if(!$product->description)
-        {{$product->des}}
+    @if(!$product->meta_description)
+        {{$product->excerpt}}
     @else
-        {{$product->description}}
+        {{$product->meta_description}}
     @endif
 @endsection
 
 @section('Crumbs')
-    <li><a href="/products/categories/{{$category->id}}">{{$category->name}}</a></li>
+    <li><a href="/products">Products</a></li>
+    <li><a href="/products/{{$product_category->slug}}">{{$product_category->name}}</a></li>
 @endsection
 @section('pageName')
     {{$product->name}}
@@ -25,13 +26,13 @@
     <div class="content-area col-md-9 col-sm-8 col-xs-12">
         <div class="type-product product">
             <div class="images">
-                <img src="{{$product->main_pic}}" alt="{{$product->name}}" />
+                <img src="/Storage/{{$product->image}}" alt="{{$product->name}}" />
             </div>
             <div class="summary entry-summary">
                 <h1 class="product_title entry-title">{{$product->name}}</h1>
 
                 <div class="product-content">
-                    <p>{!! $product->des !!}</p>
+                    <p>{!! $product->excerpt !!}</p>
                 </div>
                 <a href="/contact_us"><button class="single_add_to_cart_button button alt" ><i class="icon_mail"></i>{{trans('home.lianxiwomen4')}}</button></a>
 
@@ -45,7 +46,7 @@
                     </li>
                 </ul>
                 <div id="tab-description" class="panel entry-content wc-tab" style="display: block">
-                    {!! $product->content !!}
+                    {!! $product->body !!}
                 </div>
             </div>
             <!-- Tabs /- -->
@@ -56,8 +57,8 @@
                 <ul class="products row">
                     @foreach($related_products as $related_product)
                     <li class="product">
-                        <a href="/products/{{$related_product->id}}" title="{{$related_product->name}}">
-                            <img alt="shop" src="{{$related_product->category_pic}}" />
+                        <a href="/products/{{$product_category->slug}}/{{$related_product->slug}}" title="{{$related_product->name}}">
+                            <img alt="shop" src="/Storage/{{$related_product->image}}" />
                             <h3>{{$related_product->name}}</h3>
                         </a>
                     </li>

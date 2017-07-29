@@ -1,27 +1,32 @@
-@extends('new_sidebar')
+@extends('post_sidebar')
 @section('title')
-    @if(!$page->title)
-        {{$page->name}}
+    @if(!$post->seo_title)
+        {{$post->title}}
     @else
-        {{$page->title}}
+        {{$post->seo_title}}
     @endif
 @endsection
 @section('description')
-        {{$page->description}}
+        {{$post->excerpt}}
 @endsection
+
+@section('crumbs')
+    <li><a href="/articles">Articles</a></li>
+    <li class="active">{{$post->title}}</li>
+@endsection()
 
 @section('new_content')
     <div class="col-md-8 col-sm-8 content-area">
         <article class="type-post">
             <div class="entry-cover">
-                <img src="{{$page->main_pic}}" alt="{{$page->name}}" width="791" height="421"/>
+                <img src="{{$post->image}}" alt="{{$post->title}}" width="791" height="421"/>
             </div>
             <div class="entry-block">
                 <div class="entry-title">
-                    <h3>{{$page->name}}</h3>
+                    <h3>{{$post->title}}</h3>
                 </div>
                 <div class="entry-content">
-                    {!! $page->content !!}
+                    {!! $post->body !!}
                 </div>
             </div>
         </article>

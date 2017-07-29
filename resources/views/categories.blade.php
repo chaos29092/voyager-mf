@@ -6,13 +6,15 @@
 @section('product_content')
     <div class="content-area col-md-9 col-sm-8 col-xs-12">
         <ul class="products row">
-            @foreach($products as $product)
-            <li class="product">
-                <a href="/products/{{$product->id}}" title="{{$product->name}}">
-                    <img alt="{{$product->name}}" src="/Storage/{{$product->image}}"/>
-                    <h3>{{$product->name}}</h3>
-                </a>
-            </li>
+            @foreach($product_categories as $product_category)
+                @foreach($products->where('product_category_id',$product_category->id) as $product)
+                <li class="product">
+                    <a href="/products/{{$product_category->slug}}/{{$product->slug}}" title="{{$product->name}}">
+                        <img alt="{{$product->name}}" src="/Storage/{{$product->image}}"/>
+                        <h3>{{$product->name}}</h3>
+                    </a>
+                </li>
+                @endforeach
             @endforeach
         </ul>
 

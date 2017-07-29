@@ -7,14 +7,14 @@
         <!-- PageBanner -->
         <div class="container-fluid no-padding pagebanner">
             <div class="container">
-                <h3>{{trans('home.lianxiwomen1')}}</h3>
+                <h3>{{trans('home.lianxiwomen')}}</h3>
             </div>
         </div><!-- PageBanner /- -->
         <div class="container-fluid no-padding page-breadcrumb">
             <div class="container">
                 <ol class="breadcrumb">
                     <li><a href="/">{{trans('home.zhuye1')}}</a></li>
-                    <li class="active">{{trans('home.lianxiwomen1')}}</li>
+                    <li class="active">{{trans('home.lianxiwomen')}}</li>
                 </ol>
             </div>
         </div><!-- PageBanner /- -->

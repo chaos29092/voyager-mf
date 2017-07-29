@@ -35,12 +35,12 @@ return array(
 
 //categories.blade.php  titile内容
     'mafuluzhenkongludeng' => 'Muffle Furnace, Vacuum Furnace, Atmosphere Furnace',
-    'quanbuchanpin' => 'Product list',
+    'quanbuchanpin' => 'Products',
 
 
 //contact_us.blade.php  联系我们页面及内容
     'zhuye1' => 'Home',
-    'lianxiwomen1' => ' Contact Us',
+    'lianxiwomen' => ' Contact Us',
     'womendegongsi' => 'Our Company',
     'zaixianliuyan' => 'Online Message',
     'mingzi' => 'Name',
@@ -141,7 +141,7 @@ return array(
     'gongsimingcheng' => 'Zhengzhou Protech Technology Co.,Ltd.',
 
 
-//new_sidebar.blade.php  新闻内容
+//post_sidebar.blade.php  新闻内容
     'nuotaixinwen' => 'Protech news',
     'zhuye4' => 'Home',
     'xinwenliebiao' => 'News list',
@@ -154,7 +154,7 @@ return array(
     'zhongyaoxinwenneirong3' => 'PECVD principle brief introduction',
 
 
-//news.blade.php
+//postsposts.php
     'wenzhangliebiao' => 'Article list',
     'wenzhangxiangqing' => 'Article details',
 

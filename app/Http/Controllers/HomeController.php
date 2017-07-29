@@ -32,10 +32,70 @@ class HomeController extends Controller
     public function categories()
     {
         $product_categories = ProductCategory::orderBy('order', 'desc')->orderBy('updated_at', 'desc')->get();
-        $products = Product::orderBy('featured', 'desc')->orderBy('updated_at', 'desc')->select('id','name','image')->paginate(12);
+        $products = Product::orderBy('featured', 'desc')->orderBy('updated_at', 'desc')->select('id','name','image','slug','product_category_id')->paginate(12);
+        $featured_products = Product::whereFeatured(1)->take(5)->select('id','name','image','slug','product_category_id')->get();
 
-        return view('categories',compact('product_categories','products')) ;
+        return view('categories',compact('product_categories','products','featured_products')) ;
     }
+
+    public function category($category_slug)
+    {
+        $product_categories = ProductCategory::orderBy('order', 'desc')->orderBy('updated_at', 'desc')->get();
+        $products = ProductCategory::whereSlug($category_slug)->firstOrFail()->products()->orderBy('featured', 'desc')->orderBy('updated_at', 'desc')->select('id','name','image','slug','product_category_id')->paginate(12);
+        $featured_products = Product::whereFeatured(1)->take(5)->select('id','name','image','slug','product_category_id')->get();
+        $the_category = ProductCategory::whereSlug($category_slug)->firstOrFail();
+
+        return view('category',compact('product_categories','products','featured_products','the_category')) ;
+    }
+
+    public function product_detail($category_slug,$product_slug)
+    {
+        $product_categories = ProductCategory::orderBy('order', 'desc')->orderBy('updated_at', 'desc')->get();
+        $product_category = ProductCategory::whereSlug($category_slug)->firstOrFail();
+        $related_products = $product_category->products()->orderBy('featured', 'desc')->orderBy('updated_at', 'desc')->take(3)->select('id','name','image','slug')->get();
+        $product = Product::whereSlug($product_slug)->firstOrFail();
+        $featured_products = Product::whereFeatured(1)->take(5)->select('id','name','image','slug','product_category_id')->get();
+
+        return view('product_detail',compact('product','product_categories','product_category','related_products','featured_products'));
+    }
+
+    public function news()
+    {
+        $category = Category::find(1);
+        $posts = Category::find(1)->posts()->orderBy('updated_at', 'desc')->paginate(10);
+        return view('posts',compact('posts','category'));
+    }
+
+    public function articles()
+    {
+        $category = Category::find(5);
+        $posts = Category::find(5)->posts()->orderBy('updated_at', 'desc')->paginate(10);
+        return view('posts',compact('posts','category'));
+    }
+
+    public function article($slug)
+    {
+        $category = Category::find(5);
+        $post = Post::whereSlug($slug)->firstOrFail();
+        return view('post_detail',compact('post','category'));
+    }
+
+    public function page($slug)
+    {
+        $page = Page::whereSlug($slug)->firstOrFail();
+        return view('page',compact('page'));
+    }
+
+    public function contact_us()
+    {
+        return view('contact_us');
+    }
+
+    public function custom_cases()
+    {
+        return view('custom_cases');
+    }
+
 //    public function product_category(ProductCategory $product_category)
 //    {
 //        $products = $product_category->products()->orderBy('sort', 'asc')->orderBy('updated_at', 'desc')->paginate(10);
@@ -49,35 +109,35 @@ class HomeController extends Controller
 //        return view('product',compact('product','relate_products','category'));
 //    }
 
-    public function page(Page $page)
-    {
-        return view('page',compact('page'));
-    }
+//    public function page(Page $page)
+//    {
+//        return view('page',compact('page'));
+//    }
 
-    public function post(Post $post)
-    {
-        return view('post',compact('post'));
-    }
+//    public function post(Post $post)
+//    {
+//        return view('post',compact('post'));
+//    }
 
-    public function news()
-    {
-        $category = Category::find(1);
-        $posts = Category::find(1)->posts()->orderBy('updated_at', 'desc')->paginate(10);
-        return view('post_category',compact('posts','category'));
-    }
+//    public function news()
+//    {
+//        $category = Category::find(1);
+//        $posts = Category::find(1)->posts()->orderBy('updated_at', 'desc')->paginate(10);
+//        return view('post_category',compact('posts','category'));
+//    }
+//
+//    public function tech()
+//    {
+//        $category = Category::find(2);
+//        $posts = Category::find(2)->posts()->orderBy('updated_at', 'desc')->paginate(10);
+//        return view('post_category',compact('posts','category'));
+//    }
 
-    public function tech()
-    {
-        $category = Category::find(2);
-        $posts = Category::find(2)->posts()->orderBy('updated_at', 'desc')->paginate(10);
-        return view('post_category',compact('posts','category'));
-    }
-
-    public function contact_us()
-    {
-        $page = Page::find(1);
-        return view('contact_us',compact('page'));
-    }
+//    public function contact_us()
+//    {
+//        $page = Page::find(1);
+//        return view('contact_us',compact('page'));
+//    }
 
     public function about_us()
     {

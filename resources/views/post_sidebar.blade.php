@@ -12,7 +12,8 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li><a href="/">{{trans('home.zhuye4')}}</a></li>
-                    <li class="active">{{trans('home.xinwenliebiao')}}</li>
+                    @yield('crumbs')
+
                 </ol>
             </div>
         </div><!-- PageBanner /- -->
@@ -26,7 +27,7 @@
                         <h3 class="widget-title">{{trans('home.wenzhangfenlei')}}</h3>
                         <ul>
                             <li><a href="/news" title="Materials">{{trans('home.gongsixinwen')}}</a></li>
-                            <li><a href="/tech" title="Environment">{{trans('home.jishuwenzhang')}}</a></li>
+                            <li><a href="/articles" title="Environment">{{trans('home.jishuwenzhang')}}</a></li>
                         </ul>
                     </aside>
                     <aside class="widget widget_recent">

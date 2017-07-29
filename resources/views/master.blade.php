@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('description')">
-    <title>@yield('title') {{trans('home.nuotaikeji')}}</title>
+    <title>@yield('title') - {{trans('home.nuotaikeji')}}</title>
 
     <!-- Standard Favicon -->
     <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico')}}" />
@@ -115,14 +115,7 @@
                     <a class="text-logo desktop-hide" href="/">Manufactor</a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar">
-                    <ul class="nav navbar-nav menubar">
-                        <li><a title="{{trans('home.zhuye3')}}" href="/">{{trans('home.zhuye3')}}</a></li>
-                        <li><a title="{{trans('home.chanpin3')}}" href="/categories">{{trans('home.chanpin3')}}</a></li>
-                        <li><a title="{{trans('home.dingzhianli')}}" href="/custom_cases">{{trans('home.dingzhianli')}}</a></li>
-                        <li><a title="{{trans('home.guanyuwomwen')}}" href="/about_us">{{trans('home.guanyuwomwen')}}</a></li>
-                        <li><a title="{{trans('home.qiyexinwen')}}" href="/news_and_tech">{{trans('home.qiyexinwen')}}</a></li>
-                        <li><a title="{{trans('home.lianxiwomen3')}}" href="/contact_us">{{trans('home.lianxiwomen3')}}</a></li>
-                    </ul>
+                    {{menu('main','menu.main')}}
                 </div>
             </nav><!-- Navigation /- -->
             <div class="menu-search">

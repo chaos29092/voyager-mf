@@ -12,13 +12,19 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/categories', 'HomeController@categories');
+Route::get('/products', 'HomeController@categories');
+Route::get('/products/{category_slug}', 'HomeController@category');
+Route::get('/products/{category_slug}/{product_slug}', 'HomeController@product_detail');
 
+Route::get('/news','HomeController@news');
+Route::get('/articles','HomeController@articles');
+Route::get('/articles/{slug}','HomeController@article');
+Route::get('/pages/{slug}','HomeController@page');
+Route::get('/contact_us','HomeController@contact_us');
+Route::get('/custom_cases','HomeController@custom_cases');
 
 Route::post('contact_submit','MailController@submit');
 Route::get('submit_ok','MailController@submit_ok');
-
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

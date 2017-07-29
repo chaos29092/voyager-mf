@@ -31,7 +31,7 @@
                             </div>
                             <ul>
                                 @foreach($product_categories as $product_category)
-                                <li><a href="/products/categories/{{$product_category->id}}">{{$product_category->name}}</a></li>
+                                <li><a href="/products/{{$product_category->slug}}">{{$product_category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </aside>
@@ -39,27 +39,15 @@
                             <div class="widget-title">
                                 <h3>{{trans('home.rexiaochanpin')}}</h3>
                             </div>
-                                <div class="seller-box">
-                                    <div class="product-img"><a href="/products/20" title="{{trans('home.shiyanqifenlu')}}"><img src="{{asset('images/uploads/qifenlu.png')}}"
-                                                                                              alt="{{trans('home.shiyanqifenlu')}}"/></a></div>
-                                    <a href="/products/20"><h4>{{trans('home.shiyanqifenlu')}}</h4></a>
-                                </div>
-                            <div class="seller-box">
-                                <div class="product-img"><a href="/products/47" title="{{trans('home.qifenbaohulu')}}"><img src="{{asset('images/uploads/qifrnbaohulu.png')}}"
-                                                                                               alt="{{trans('home.qifenbaohulu')}}"/></a></div>
-                                <a href="/products/47"><h4>{{trans('home.qifenbaohulu')}}</h4></a>
-                            </div>
-
-                                <div class="seller-box">
-                                    <div class="product-img"><a href="/products/15" title="{{trans('home.zhenkongshaojielu')}}"><img src="{{asset('images/uploads/zhenkonglu.png')}}"
-                                                                                              alt="{{trans('home.zhenkongshaojielu')}}"/></a></div>
-                                    <a href="/products/15"><h4>{{trans('home.zhenkongshaojielu')}}</h4></a>
-                                </div>
-                                <div class="seller-box">
-                                    <div class="product-img"><a href="/products/29" title="{{trans('home.gaozhenkongPECVD')}}"><img src="{{asset('images/uploads/pecvdhunqi.png')}}"
-                                                                                              alt="{{trans('home.gaozhenkongPECVD')}}"/></a></div>
-                                    <a href="/products/29"><h4>{{trans('home.gaozhenkongPECVD')}}</h4></a>
-                                </div>
+                            @foreach($product_categories as $product_category)
+                                @foreach($featured_products->where('product_category_id',$product_category->id) as $featured_product)
+                                    <div class="seller-box">
+                                        <div class="product-img"><a href="/products/{{$product_category->slug}}/{{$featured_product->slug}}" title="{{$featured_product->name}}"><img src="/Storage/{{$featured_product->image}}" width="95px" height="108px"
+                                                                                                                                     alt="{{$featured_product->name}}"/></a></div>
+                                        <a href="/products/{{$product_category->slug}}/{{$featured_product->slug}}"><h4>{{$featured_product->name}}</h4></a>
+                                    </div>
+                                @endforeach
+                            @endforeach
                             </aside>
                         </div>
 

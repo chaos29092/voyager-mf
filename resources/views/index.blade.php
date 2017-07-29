@@ -68,8 +68,8 @@
             <div class="row">
                 @foreach($product_categories as $product_category)
                 <div class="col-md-4 col-sm-6 col-xs-6 introdction-block">
-                    <a href="/products/categories/{{$product_category->id}}"><img src="/Storage/{{$product_category->category_image}}" alt="{{$product_category->name}}" width="370" height="281"/></a>
-                    <h3><a href="/products/categories/{{$product_category->id}}" title="{{$product_category->name}}">{{$product_category->name}}</a></h3>
+                    <a href="/products/{{$product_category->slug}}"><img src="/Storage/{{$product_category->category_image}}" alt="{{$product_category->name}}" width="370" height="281"/></a>
+                    <h3><a href="/products/{{$product_category->slug}}" title="{{$product_category->name}}">{{$product_category->name}}</a></h3>
                     <span>{{$product_category->excerpt}}</span>
                 </div>
                 @endforeach

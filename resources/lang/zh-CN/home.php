@@ -127,7 +127,7 @@ return [
     'gongsimingcheng' => '郑州诺泰科技有限公司',
 
 
-//new_sidebar.blade.php  新闻内容
+//post_sidebar.blade.php  新闻内容
     'nuotaixinwen' => '诺泰新闻',
     'zhuye' => '主页',
     'xinwenliebiao' => '新闻列表',
@@ -140,7 +140,7 @@ return [
     'zhongyaoxinwenneirong3' => 'PECVD原理简介',
 
 
-//news.blade.php
+//postsposts.php
     'wenzhangliebiao' => '文章列表',
     'wenzhangxiangqing' => '文章详情',
 
